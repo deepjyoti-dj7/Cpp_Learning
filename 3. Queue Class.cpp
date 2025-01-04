@@ -54,7 +54,7 @@ public:
 };
 
 int main() {
-    Queue<double> queue(5);
+    Queue<int> queue(5);
 
     queue.push(10);
     queue.push(20);
