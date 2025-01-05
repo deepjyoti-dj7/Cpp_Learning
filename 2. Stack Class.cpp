@@ -8,8 +8,21 @@ private:
     size_t size;
     T* data;
 
+    void resize() {
+        size_t newCapacity = capacity * 2;
+        T* newData = new T[newCapacity];
+        
+        for (size_t i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        
+        delete[] data;
+        data = newData;
+        capacity = newCapacity;
+    }
+
 public:
-    Stack(size_t capacity = 10) : capacity(capacity), size(0) {
+    Stack(size_t initialCapacity = 1) : capacity(initialCapacity), size(0) {
         data = new T[capacity];
     }
 
@@ -31,11 +44,9 @@ public:
 
     void push(const T& value) {
         if (isFull()) {
-            std::cout << "Stack is full!" << std::endl;
+            resize();
         }
-        else {
-            data[size++] = value;
-        }
+        data[size++] = value;
     }
 
     T pop() {
@@ -54,13 +65,15 @@ public:
 };
 
 int main() {
-    Stack<int> stack(5);
+    Stack<int> stack;
 
     stack.push(10);
     stack.push(20);
     stack.push(30);
     stack.push(40);
     stack.push(50);
+
+    std::cout << "Current stack size: " << stack.getSize() << std::endl;
 
     std::cout << "Top element: " << stack.peek() << std::endl;
 
