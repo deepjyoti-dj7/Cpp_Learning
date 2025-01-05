@@ -25,7 +25,7 @@ private:
     }
 
 public:
-    Deque(size_t initialCapacity = 2) : capacity(initialCapacity), size(0), front(0), rear(capacity - 1) {
+    Deque(size_t initialCapacity = 1) : capacity(initialCapacity), size(0), front(0), rear(capacity - 1) {
         data = new T[capacity];
     }
 

@@ -9,8 +9,23 @@ private:
     size_t rear;
     size_t size;
 
+    void resize() {
+        size_t newCapacity = capacity * 2;
+        T* newData = new T[newCapacity];
+
+        for (size_t i = 0; i < size; ++i) {
+            newData[i] = data[(front + i) % capacity];
+        }
+
+        delete[] data;
+        data = newData;
+        front = 0;
+        rear = size;
+        capacity = newCapacity;
+    }
+
 public:
-    Queue(size_t capacity = 10) : capacity(capacity), front(0), rear(capacity - 1), size(0) {
+    Queue(size_t initialCapacity = 1) : capacity(initialCapacity), front(0), rear(capacity - 1), size(0) {
         data = new T[capacity];
     }
 
@@ -28,7 +43,7 @@ public:
 
     void push(const T& value) {
         if (isFull()) {
-            std::cout << "Queue is full!" << std::endl;
+            resize();
         }
         rear = (rear + 1) % capacity;
         data[rear] = value;
@@ -71,6 +86,8 @@ int main() {
     while (!queue.isEmpty()) {
         std::cout << "Popped element: " << queue.pop() << std::endl;
     }
+
+    std::cout << "Current queue size: " << queue.getSize() << std::endl;
 
     std::cout << "Trying to pop from an empty queue..." << std::endl;
     queue.pop();
