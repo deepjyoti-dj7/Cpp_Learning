@@ -74,17 +74,17 @@ int main() {
     v.push_back(30);
 
     cout << "Elements in vector: ";
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++) 
         cout << v[i] << " ";
-    }
+    
     cout << endl;
 
     v.pop_back();
 
     cout << "After pop_back(): ";
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++) 
         cout << v[i] << " ";
-    }
+    
     cout << endl;
 
     cout << "Current Size: " << v.size() << endl;
