@@ -1,0 +1,131 @@
+# 🧠 C++ Architecture & Execution Flow
+
+This document explains how C++ source code is processed and executed by the system. Understanding this can help you write more efficient and maintainable C++ code.
+
+---
+
+## 📁 1. Source Code
+
+C++ programs are written in `.cpp` files using:
+
+- Functions
+- Classes
+- Templates
+- Headers (`.h` / `.hpp`)
+
+---
+
+## ⚙️ 2. Preprocessing
+
+The **preprocessor** handles:
+
+- `#include` → Inserts header files
+- `#define` → Replaces macros
+- `#ifdef`, `#ifndef`, etc. → Conditional compilation
+
+Example:
+
+```
+g++ -E file.cpp -o file.i
+```
+
+Output: `.i` file (preprocessed code)
+
+---
+
+## 🔨 3. Compilation
+
+The **compiler** converts `.i` to **assembly** code (`.s`), checks syntax, and performs optimizations.
+
+Example:
+
+```
+g++ -S file.i -o file.s
+```
+
+Output: `.s` file (assembly)
+
+---
+
+## 🏗️ 4. Assembling
+
+The **assembler** turns `.s` into **machine-level object code** (`.o`), which is not yet executable.
+
+Example:
+
+```
+g++ -c file.cpp -o file.o
+```
+
+Output: `.o` file (object)
+
+---
+
+## 🔗 5. Linking
+
+The **linker** combines:
+
+- Object files
+- Standard and custom libraries (`.a`, `.so`)
+- Resolves function calls & symbols
+
+Example:
+
+```
+g++ file.o -o program
+```
+
+Output: `program` (final executable)
+
+---
+
+## 🖥️ 6. Execution
+
+The OS loads your executable into memory and starts it from the `main()` function.
+
+---
+
+## 🧭 Full Lifecycle
+
+1. Source Code → `.cpp`
+2. Preprocessing → `.i`
+3. Compilation → `.s`
+4. Assembling → `.o`
+5. Linking → Executable
+6. Execution → OS runs program
+
+---
+
+## 🧱 Memory Layout of a Running C++ Program
+
+| Segment | Description                             |
+| ------- | --------------------------------------- |
+| Text    | Actual compiled code (read-only)        |
+| Data    | Global/static variables (initialized)   |
+| BSS     | Global/static variables (uninitialized) |
+| Heap    | Dynamically allocated memory (`new`)    |
+| Stack   | Function calls and local variables      |
+
+---
+
+## 🧪 Example Code Breakdown
+
+```cpp
+int main() {
+    int a = 5;              // Stored in stack
+    int* p = new int[10];   // Memory allocated in heap
+    return 0;
+}
+```
+
+---
+
+## ✅ Quick Command Summary
+
+| Phase         | Command                   | Output      |
+| ------------- | ------------------------- | ----------- |
+| Preprocessing | g++ -E file.cpp -o file.i | file.i      |
+| Compilation   | g++ -S file.i -o file.s   | file.s      |
+| Assembling    | g++ -c file.cpp -o file.o | file.o      |
+| Linking       | g++ file.o -o program     | program     |
+| Execution     | ./program                 | Run program |
