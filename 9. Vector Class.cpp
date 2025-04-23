@@ -1,24 +1,25 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class Vector {
 private:
-    int* arr;
+    T* arr;
     int capacity;
     int current;
 
 public:
     // Constructor
     Vector() {
-        arr = new int[1];
+        arr = new T[1];
         capacity = 1;
         current = 0;
     }
 
     // Add element at the end
-    void push_back(int data) {
+    void push_back(T data) {
         if (current == capacity) {
-            int* temp = new int[2 * capacity];
+            T* temp = new T[2 * capacity];
             for (int i = 0; i < capacity; i++) {
                 temp[i] = arr[i];
             }
@@ -38,15 +39,15 @@ public:
     }
 
     // Get element at index
-    int get(int index) const {
+    T get(int index) const {
         if (index < current) {
             return arr[index];
         }
-        return -1; // Or throw an exception
+        return T(); // Default value for T
     }
 
     // Overload [] operator
-    int operator[](int index) const {
+    T operator[](int index) const {
         return get(index);
     }
 
@@ -67,7 +68,7 @@ public:
 };
 
 int main() {
-    Vector v;
+    Vector<int> v;
 
     v.push_back(10);
     v.push_back(20);
@@ -89,6 +90,15 @@ int main() {
 
     cout << "Current Size: " << v.size() << endl;
     cout << "Capacity: " << v.getCapacity() << endl;
+
+    // Test with another type
+    Vector<string> vs;
+    vs.push_back("hello");
+    vs.push_back("world");
+    cout << "String Vector: ";
+    for (int i = 0; i < vs.size(); i++) 
+        cout << vs[i] << " ";
+    cout << endl;
 
     return 0;
 }
