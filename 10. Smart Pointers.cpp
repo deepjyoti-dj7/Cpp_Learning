@@ -32,7 +32,9 @@ void smartUniqueExample() {
 
 void rawSharedExample() {
     std::cout << "\n[Raw Pointer - Shared Ownership]\n";
+
     MyClass* obj = new MyClass("RawShared");
+    
     MyClass* shared1 = obj;
     MyClass* shared2 = obj;
     // Need to manually delete, and dangerous if deleted more than once
@@ -41,6 +43,7 @@ void rawSharedExample() {
 
 void smartSharedExample() {
     std::cout << "\n[shared_ptr Example]\n";
+
     std::shared_ptr<MyClass> shared1 = std::make_shared<MyClass>("SmartShared");
     std::shared_ptr<MyClass> shared2 = shared1; // shared1 and shared2 both own the object
     // Automatically deleted when last owner goes out of scope
@@ -62,8 +65,10 @@ struct B {
 
 void weakPointerExample() {
     std::cout << "\n[weak_ptr Example to break circular reference]\n";
+
     std::shared_ptr<A> a = std::make_shared<A>();
     std::shared_ptr<B> b = std::make_shared<B>();
+
     a->b_ptr = b;
     b->a_ptr = a; // does NOT increase reference count
     // When a and b go out of scope, both are properly destroyed
