@@ -5,13 +5,11 @@ curl -X POST http://localhost:3000/users -H "Content-Type: application/json" -d 
 fetch all users
 curl http://localhost:3000/users
 
-Here's a detailed `README.md` file covering all important **SQLite concepts with Node.js** on **Windows**, including installation, usage, and code examples:
-
 ---
 
-# 🗃️ SQLite + Node.js on Windows – Complete Guide
+# 🗃️ SQLite + Node.js – Complete Guide
 
-This guide explains how to set up and use SQLite with Node.js on **Windows**, including key SQLite concepts and examples using the `sqlite3` and `better-sqlite3` packages.
+This guide explains how to set up and use SQLite with Node.js, including key SQLite concepts and examples using the `sqlite3` and `better-sqlite3` packages.
 
 ---
 
