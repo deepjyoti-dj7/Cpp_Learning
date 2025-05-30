@@ -1,3 +1,4 @@
+````markdown
 # 🚀 Redis + Node.js – Complete Guide
 
 This guide explains how to set up and use Redis with Node.js, covering essential Redis concepts with practical code examples.
@@ -53,7 +54,6 @@ sudo apt update
 sudo apt install redis-server
 redis-server
 ```
-
 ````
 
 ---
@@ -248,5 +248,6 @@ async function isRateLimited(ip) {
 - [BullMQ (Redis Job Queue)](https://docs.bullmq.io/)
 - [RedisInsight GUI](https://redis.com/redis-enterprise/redis-insight/)
 
----
-````
+```
+
+```
