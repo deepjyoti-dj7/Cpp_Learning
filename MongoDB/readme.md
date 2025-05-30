@@ -275,27 +275,3 @@ mongoexport --db=mydb --collection=users --out=users.json
 # Import data
 mongoimport --db=mydb --collection=users --file=users.json
 ```
-
----
-
-## 📚 Resources
-
-- [Official MongoDB Docs](https://www.mongodb.com/docs/)
-- [MongoDB University](https://university.mongodb.com/)
-- [MongoDB Shell](https://www.mongodb.com/products/shell)
-- [Mongoose (ODM)](https://mongoosejs.com/) – for Node.js integration
-
----
-
-## ✅ Author
-
-Maintained by \[DJ] – MongoDB enthusiast with hands-on enterprise experience.
-
-Feel free to contribute, suggest improvements, or ask questions!
-
-```
-
----
-
-Let me know if you'd like this tailored to a specific framework like **Mongoose**, or to include examples of performance benchmarking, deployment strategies, or schema validation tools like **MongoDB Compass**.
-```
